@@ -1,6 +1,6 @@
 jobs:
 
-  - name: ACCOLADE-COMPONENT-SYSTEM-NAME_runCI
+  - name: fantastic-octo-broccoli_runCI
     type: runCI
     steps:
       - OUT: dv-image
