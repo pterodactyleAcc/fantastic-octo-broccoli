@@ -1,19 +1,19 @@
-# Language setting
-language: python
-
-# Version number
-python:
-  - 2.7
+language: java
 
 build:
   ci:
-    - python --version
+    - mvn clean package
     - echo "versionName=$BUILD_NUMBER" > $JOB_STATE/dv-image.env
     - echo "versionName=$BUILD_NUMBER" > $JOB_STATE/box-image.env
 
 integrations:
+  
+  hub:
+    - integrationName: art
+      type: artifactory
 
   notifications:
+    
     - integrationName: email
       type: email
       on_success: never
