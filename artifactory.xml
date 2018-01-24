@@ -1,4 +1,12 @@
 <settings>
+    <mirrors>
+    		<mirror>
+      			<id>repo1</id>
+			<name>Accolade's artifactory to use as comapany repo</name>
+			<url>https://accolade.jfrog.io/accolade/repo1</url>
+			<mirrorOf>*</mirrorOf>
+		</mirror>
+	</mirrors>
     <servers>
         <server>
             <id>repo1</id>
