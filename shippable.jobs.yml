@@ -43,20 +43,6 @@ jobs:
       - TASK: managed
       - IN: trigger-dv-man
 
-  - name: dv-test
-    type: deploy
-    on_start:
-      - NOTIFY: slackNotification
-    steps:
-      - IN: dv-man
-      - IN: env-test
-      - TASK: managed
-        deployMethod: upgrade
-    on_success:
-      - NOTIFY: slackNotification
-    on_failure:
-      - NOTIFY: slackNotification
-
   - name: box-man
     type: manifest
     steps:
@@ -67,36 +53,6 @@ jobs:
       - TASK: managed
     flags:
       - box
-
-  - name: box-test
-    type: deploy
-    steps:
-      - IN: box-man
-      - IN: env-test
-      - TASK: managed
-        deployMethod: upgrade
-
-  - name: box-dcl
-    type: deploy
-    steps:
-      - IN: box-man
-      - IN: env-dcl
-      - TASK: managed
-
-  - name: box-gke
-    type: deploy
-    steps:
-      - IN: box-man
-      - IN: env-gke
-      - TASK: managed
-
-  - name: box-prod
-    type: deploy
-    steps:
-      - IN: box-man
-        switch: off
-      - IN: env-prod
-      - TASK: managed
 
   - name: multi-manifest
     type:  deploy
@@ -114,22 +70,6 @@ jobs:
       - IN: dv-man
       - TASK: managed
         bump: major
-
-  - name: box-tripub-man
-    type: manifest
-    steps:
-      - IN: box-image
-        pull: false
-      - IN: box-tripub-opts
-      - TASK: managed
-
-  - name: box-tripub
-    type: deploy
-    steps:
-      - IN: box-tripub-man
-        force: true
-      - IN: env-tripub
-      - TASK: managed
 
   - name: infra-provision
     type: runSh
@@ -150,26 +90,12 @@ jobs:
         - script: "echo 'versionName=latest' > /build/state/dv-image.env"
       - OUT: dv-image
 
-  - name: app-jfrog-manifest
-    type: manifest
-    steps:
-      - IN: app-package-jfrog
-      - IN: trigger-jfrog-manifest
-
   - name: app-rawFile-manifest
     type: manifest
     steps:
       - IN: app-package-rawFile
       - IN: trigger-rawFile-manifest
 
-  # Fetches file from jfrog artifactory
-  # and transfers to the nodes in the cluster
-  - name: app-jfrog-deploy
-    type: deploy
-    steps:
-      - IN: app-jfrog-manifest
-        force: true
-      - IN: app-cluster
 
   # Fetches file from URL and transfer to the nodes in the cluster
   # and executes the commands and scripts on the nodes
@@ -178,7 +104,6 @@ jobs:
     steps:
       - IN: app-rawFile-manifest
         force: true
-      - IN: app-cluster
       - TASK:
           - script: cd /tmp/shippable && ls
           - script: ~/restartWebServerService.sh
