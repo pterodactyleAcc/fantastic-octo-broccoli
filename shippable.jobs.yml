@@ -1,4 +1,11 @@
 jobs:
+
+  - name: ACCOLADE-COMPONENT-SYSTEM-NAME_runCI
+    type: runCI
+    steps:
+      - OUT: dv-image
+      - OUT: box-image
+      
   - name: dv-man
     type: manifest
     steps:
