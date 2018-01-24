@@ -54,15 +54,6 @@ jobs:
     flags:
       - box
 
-  - name: multi-manifest
-    type:  deploy
-    steps:
-      - IN: box-man
-      - IN: dv-man
-      - IN: env-test
-      - TASK: managed
-        deployMethod: upgrade
-
   - name: release-one
     type: release
     steps:
@@ -70,17 +61,6 @@ jobs:
       - IN: dv-man
       - TASK: managed
         bump: major
-
-  - name: infra-provision
-    type: runSh
-    steps:
-      - IN: infra-repo
-      - TASK:
-        - script: ls
-        - script: ./IN/infra-repo/gitRepo/provision.sh
-    on_success:
-      - script: echo 'This block executes after TASK section executes successfully'
-      - NOTIFY: slackNotifcation
 
   - name: build-dv-image
     type: runSh
