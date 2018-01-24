@@ -1,7 +1,6 @@
 resources:
   - name: dv-image
     type: image
-    integration: ric03uec-dh
     pointer:
       sourceName: "library/nginx"
     seed:
@@ -25,7 +24,6 @@ resources:
 
   - name: box-image
     type: image
-    integration: ric03uec-dh
     pointer:
       sourceName: "aye0aye/box"
     seed:
@@ -50,20 +48,6 @@ resources:
       memory: 64
       cpuShares: 512
 
-  - name: env-prod
-    type: cluster
-    integration: ric03uec-ecs
-    pointer:
-      sourceName : "prod-aws" #name of the cluster we are deploying
-      region: "us-east-1"
-
-  - name: env-test
-    type: cluster
-    integration: ric03uec-ecs
-    pointer:
-      sourceName : "test-aws" #name of the cluster we are deploying
-      region: "us-east-1"
-
   - name: box-scaler
     type: replicas
     version:
@@ -71,31 +55,10 @@ resources:
     flags:
       - replicas
 
-  - name: env-dcl
-    type: cluster
-    integration: sid-dcl
-    pointer:
-     sourceName : "docker-cloud-node" #name of the cluster we are deploying
-
-  - name: env-gke
-    type: cluster
-    integration: gke-int
-    pointer:
-      sourceName: "sid-test-gke-cluster-1" #name of the cluster we are deploying.
-      region: "us-central1-b"
-
   - name: version-resource
     type: version
     seed:
       versionName: "0.0.1-beta"
-
-  - name: env-tripub
-    type: cluster
-    integration: tripub-int
-    pointer:
-      region: "us-east-1"
-    flags:
-      - tripub
 
   - name: box-tripub-opts
     type: dockerOptions
@@ -131,26 +94,11 @@ resources:
     integration: slack
     pointer:
       recipients:
-        - "#slackchannel"
-
-  - name: myEmail
-    type: notification
-    pointer:
-      method: email
-      recipients:
-        -  "john@shippable.com"
+        - "#philosoraptoracc"
 
   - name: slackIntegration
     type: integration
     integration: slack
-
-  - name: app-package-jfrog
-    type: file
-    integration: xyzcompany-jfrog
-    pointer:
-      sourceName: pages/index.html
-    seed:
-      versionName: initial
 
   - name: app-package-rawFile
     type: file
@@ -159,6 +107,3 @@ resources:
     seed:
       versionName: initial
 
-  - name: app-cluster
-    type: cluster
-    integration: xyzcompany-node-cluster
