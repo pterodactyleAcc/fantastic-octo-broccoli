@@ -3,7 +3,8 @@
     <modelVersion>4.0.0</modelVersion>
 
 
-    <artifactId>io.brocolli</artifactId>
+    <artifactId>brocolli</artifactId>
+    <groupId>io.brocolli</groupId>
     <packaging>pom</packaging>
     <name>brocolli-art</name>
     <version>1.0.2-SNAPSHOT</version>
