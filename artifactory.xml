@@ -1,17 +1,7 @@
 <settings>
     <servers>
         <server>
-            <id>accolade-releases</id>
-            <username>${ARTIFACTORY_USERNAME}</username>
-            <password>${ARTIFACTORY_PASSWORD}</password>
-        </server>
-        <server>
-            <id>accolade-snapshots</id>
-            <username>${ARTIFACTORY_USERNAME}</username>
-            <password>${ARTIFACTORY_PASSWORD}</password>
-        </server>
-        <server>
-            <id>external-releases</id>
+            <id>repo1</id>
             <username>${ARTIFACTORY_USERNAME}</username>
             <password>${ARTIFACTORY_PASSWORD}</password>
         </server>
