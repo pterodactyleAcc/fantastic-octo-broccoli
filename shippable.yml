@@ -8,3 +8,19 @@ python:
 build:
   ci:
     - python --version
+    - echo "versionName=$BUILD_NUMBER" > $JOB_STATE/dv-image.env
+    - echo "versionName=$BUILD_NUMBER" > $JOB_STATE/box-image.env
+
+integrations:
+
+  notifications:
+    - integrationName: email
+      type: email
+      on_success: never
+      on_failure: never
+      on_pull_request: never
+
+    - integrationName: slack
+      type: slack
+      recipients:
+        - "#philosoraptoracc"
