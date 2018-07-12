@@ -23,6 +23,7 @@ jobs:
       - script: echo 'this is on_failure step of dv-man of type manifest'
     flags:
       - dv
+      - dv2
 
   - name: dv-man-versionName
     type: manifest
