@@ -1,5 +1,8 @@
 language: java
 
+java:
+  - openjdk7
+
 build:
   ci:
     - mvn clean package -s artifactory.xml -X
