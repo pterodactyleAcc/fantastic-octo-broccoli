@@ -5,7 +5,7 @@ jdk:
 
 build:
   ci:
-    - mvn clean package -s artifactory.xml -X
+    - mvn clean package -s artifactory.xml
     - echo "versionName=$BUILD_NUMBER" > $JOB_STATE/dv-image.env
     - echo "versionName=$BUILD_NUMBER" > $JOB_STATE/box-image.env
 
