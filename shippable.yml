@@ -2,7 +2,6 @@ language: java
 
 build:
   ci:
-    - env
     - mvn clean package -s artifactory.xml -X
     - echo "versionName=$BUILD_NUMBER" > $JOB_STATE/dv-image.env
     - echo "versionName=$BUILD_NUMBER" > $JOB_STATE/box-image.env
