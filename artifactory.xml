@@ -1,15 +1,15 @@
 <settings>
     <mirrors>
     		<mirror>
-      			<id>repo1</id>
+      			<id>philosoraptor</id>
 			<name>Accolade's artifactory to use as comapany repo</name>
-			<url>${ARTIFACTORYKEY_URL}/accolade/repo1-cache</url>
+			<url>${ARTIFACTORYKEY_URL}/accolade/philosoraptor</url>
 			<mirrorOf>*</mirrorOf>
 		</mirror>
 	</mirrors>
     <servers>
         <server>
-            <id>repo1</id>
+            <id>philosoraptor</id>
             <username>${ARTIFACTORYKEY_USERNAME}</username>
             <password>${ARTIFACTORYKEY_PASSWORD}</password>
         </server>
