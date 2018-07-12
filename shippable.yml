@@ -9,7 +9,7 @@ build:
 integrations:
   
   hub:
-    - integrationName: art
+    - integrationName: philo-artifactory
       type: artifactory
 
   notifications:
